@@ -1,5 +1,6 @@
-# logseq-plugin-react-boilerplate
-> logseq-plugin-react-boilerplate with vite react typescript tailwindcss antd
+# logseq-card-manager
+
+Forked from [logseq-plugin-react-boilerplate](https://github.com/haydenull/logseq-plugin-react-boilerplate)
 
 [![latest release version](https://img.shields.io/github/v/release/haydenull/logseq-plugin-react-boilerplate)](https://github.com/haydenull/logseq-plugin-react-boilerplate/releases)
 [![License](https://img.shields.io/github/license/haydenull/logseq-plugin-react-boilerplate?color=blue)](https://github.com/haydenull/logseq-plugin-react-boilerplate/blob/main/LICENSE)
