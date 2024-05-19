@@ -1,9 +1,9 @@
 {
-  "name": "logseq-plugin-react-boilerplate",
+  "name": "logseq-card-manager",
   "version": "1.2.0",
   "main": "dist/index.html",
   "logseq": {
-    "id": "logseq-plugin-react-boilerplate",
+    "id": "logseq-card-manager",
     "icon": "logo.png"
   },
   "scripts": {
