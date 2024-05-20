@@ -14,9 +14,19 @@ if (isDevelopment) {
 
     logseq.provideModel({
       show() {
+        console.group('logseq-card-manager')
+        console.log('show')
+        fetchCards()
         renderApp('logseq')
         logseq.showMainUI()
+        console.groupEnd()
       },
+      hide() {
+        console.group('logseq-card-manager')
+        console.log('hide')
+        logseq.hideMainUI()
+        console.groupEnd()
+      }
     })
 
     logseq.App.registerUIItem('toolbar', {
@@ -25,6 +35,14 @@ if (isDevelopment) {
     })
 
   })
+}
+
+async function fetchCards() {
+  const query = '[[card]]'
+  const queryBlocks = await logseq.DB.q(query) ?? []
+  console.log({ queryBlocksCount: queryBlocks.length, queryBlocks })
+  const cardBlocks = queryBlocks.filter(block => block.content?.includes('#card') ?? false)
+  console.log({ cardBlocksCount: cardBlocks.length, cardBlocks })
 }
 
 function renderApp(env: string) {
