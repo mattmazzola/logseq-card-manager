@@ -5,9 +5,6 @@ Forked from [logseq-plugin-react-boilerplate](https://github.com/haydenull/logse
 [![latest release version](https://img.shields.io/github/v/release/haydenull/logseq-plugin-react-boilerplate)](https://github.com/haydenull/logseq-plugin-react-boilerplate/releases)
 [![License](https://img.shields.io/github/license/haydenull/logseq-plugin-react-boilerplate?color=blue)](https://github.com/haydenull/logseq-plugin-react-boilerplate/blob/main/LICENSE)
 
-## Demo
-![demo](./demo.gif)
-
 ## Usage
 1. Use this template create your own plugin
 2. change `package.json` to your own plugin name
