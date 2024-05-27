@@ -1,28 +1,37 @@
-import '@logseq/libs'
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App'
-import './index.css'
+import "@logseq/libs"
+import React from "react"
+import proxyLogseq from "logseq-proxy"
+import { type Root, createRoot } from "react-dom/client"
+import App from "./App"
+import "./index.css"
 
-const isDevelopment = import.meta.env.DEV
-
-if (isDevelopment) {
-  fetchCards()
-  renderApp('browser')
-
-  logseq.ready(() => {
-    console.log('logseq.ready()')
+if (import.meta.env.VITE_MODE === "web") {
+  // run in browser
+  console.log(
+    "[faiz:] === meta.env.VITE_LOGSEQ_API_SERVER",
+    import.meta.env.VITE_LOGSEQ_API_SERVER
+  )
+  console.log(
+    `%c[version]: v${__APP_VERSION__}`,
+    "background-color: #60A5FA; color: white; padding: 4px;"
+  )
+  proxyLogseq({
+    config: {
+      apiServer: import.meta.env.VITE_LOGSEQ_API_SERVER,
+      apiToken: import.meta.env.VITE_LOGSEQ_API_TOKEN,
+    },
+    settings: window.mockSettings,
   })
+  renderApp()
 } else {
-  console.log('=== logseq-card-manager loaded ===')
+  console.log("=== logseq-plugin-react-boilerplate loaded ===")
   logseq.ready(() => {
-
     logseq.provideModel({
       show() {
         console.group('logseq-card-manager')
         console.log('show')
         fetchCards()
-        renderApp('logseq')
+        renderApp()
         logseq.showMainUI()
         console.groupEnd()
       },
@@ -136,11 +145,11 @@ async function fetchCards() {
   // console.log({ firstBlockProperties })
 }
 
-function renderApp(env: string) {
-  ReactDOM.render(
+function renderApp() {
+  const root = createRoot(document.getElementById("root")!)
+  root.render(
     <React.StrictMode>
-      <App env={env} />
-    </React.StrictMode>,
-    document.getElementById('root')
+      <App />
+    </React.StrictMode>
   )
 }
