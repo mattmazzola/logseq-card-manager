@@ -3,3 +3,6 @@ node_modules
 dist
 dist-ssr
 *.local
+
+# Ignore environment variables possibly containing secrets
+.env*
