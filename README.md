@@ -8,7 +8,7 @@ npm run build
 ### Regex to parse block properties
 
 ```
-https://regex101.com/r/u2olQB/1
+https://regex101.com/r/w8w9dL/1
 ```
 
 ### Icons
