@@ -22,7 +22,12 @@ if (import.meta.env.VITE_MODE === "web") {
     },
     settings: window.mockSettings,
   })
+
+  console.group('logseq-card-manager')
+  console.log('show')
+  fetchCards()
   renderApp()
+  console.groupEnd()
 } else {
   console.log("=== logseq-plugin-react-boilerplate loaded ===")
   logseq.ready(() => {
