@@ -66,7 +66,7 @@ async function fetchCards() {
   }
 
   console.log({ queryBlocks })
-  const cardBlocks = queryBlocks.filter(block => block.content?.includes('#card') ?? false)
+  const cardBlocks = queryBlocks.filter(block => ['#card', '[[card]]'].some(x => block.content?.includes(x)) ?? false)
 
   console.log({ cardBlocks })
   if (cardBlocks.length === 0) {
@@ -83,7 +83,7 @@ async function fetchCards() {
   console.log({ cardsWithParsedContent })
 
   const blocksWithNonCardProperties = cardsWithParsedContent.map(parsedBlock => {
-    const normalizedProperties = parsedBlock.parsedContent.map(x => x.replace('#', ''))
+    const normalizedProperties = parsedBlock.parsedContent.map(x => x.replace('#', '').replace('[', '').replace(']', ''))
     const nonCardProperties = normalizedProperties.filter(p => !p.startsWith('card'))
     const newBlock = {
       ...parsedBlock,
@@ -93,8 +93,10 @@ async function fetchCards() {
     return newBlock
   })
 
-  const UNCATEGORIZED_CATEGORY_NAME = 'uncategorized'
   console.log({ blocksWithNonCardProperties })
+
+  
+  const UNCATEGORIZED_CATEGORY_NAME = 'uncategorized'
   const categoryToBlocksMap = new Map()
   for (const block of blocksWithNonCardProperties) {
     if (block.nonCardProperties.length === 0) {
