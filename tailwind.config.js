@@ -10,6 +10,9 @@ module.exports = {
         highlight: '#B3C2C9',
         buttonbg: '#084958',
       },
+      fontFamily: {
+        'body': ['Inter', 'Inter var', 'sans-serif'],
+      }
     },
   },
   plugins: [],
